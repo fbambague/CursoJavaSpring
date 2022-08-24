@@ -1,7 +1,8 @@
-package com.curso.market.persistence.crud;
+package com.curso.market.persistence;
 
 import com.curso.market.domain.Product;
 import com.curso.market.domain.repository.ProductRepository;
+import com.curso.market.persistence.crud.ProductoCrudRepository;
 import com.curso.market.persistence.entity.Producto;
 import com.curso.market.persistence.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
