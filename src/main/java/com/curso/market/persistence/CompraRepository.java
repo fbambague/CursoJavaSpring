@@ -29,7 +29,7 @@ public class CompraRepository implements PurchaseRepository {
     }
 
     @Override
-    public Optional<List<Purchase>> getByClient(String clientId) {
+    public Optional<List<Purchase>> getByClientId(String clientId) {
         Optional<List<Compra>> compras = compraCrudRepository.findByIdCliente(clientId);
         return compras.map(compras1 -> purchaseMapper.toPurchases(compras1));
     }

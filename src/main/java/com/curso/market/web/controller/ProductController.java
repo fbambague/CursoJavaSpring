@@ -2,6 +2,10 @@ package com.curso.market.web.controller;
 
 import com.curso.market.domain.Product;
 import com.curso.market.domain.service.ProductService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +25,20 @@ public class ProductController {
     }
 
     @GetMapping("/all")
+    @ApiOperation("Get all supermarket products")
+    @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Product>> getAll(){
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/get/{productId}")
-    public ResponseEntity<Product> getProduct(@PathVariable("productId") int productId){
+    @ApiOperation("Search operations qith an id")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Product not found")
+    })
+    public ResponseEntity<Product> getProduct(@ApiParam(value = "THe id of the product", required = true, example = "7")
+                                            @PathVariable("productId") int productId){
         return productService.getProduct(productId)
                 .map(product -> new ResponseEntity<>(product,HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));

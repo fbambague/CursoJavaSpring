@@ -4,16 +4,16 @@ import com.curso.market.persistence.entity.ComprasProductoPK;
 
 public class PurchaseItem {
 
-    private ComprasProductoPK productId;
+    private int productId;
     private Integer quantity;
     private Double total;
     private Boolean active;
 
-    public ComprasProductoPK getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(ComprasProductoPK productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
@@ -40,4 +40,6 @@ public class PurchaseItem {
     public void setActive(Boolean active) {
         this.active = active;
     }
+
+
 }
